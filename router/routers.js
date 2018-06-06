@@ -5,8 +5,8 @@ module.exports = (app) =>{
 
     app.get("/setBus", (req, res)=>{
         //query mongo almacena posicion 
-	//lat = req.query.Lat;
-	//lon = req.query.Lon;
+	lat = req.query.Lat;
+	lon = req.query.Lon;
 
     });
 

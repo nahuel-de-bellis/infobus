@@ -3,18 +3,18 @@ var coor = {"Lat": 0, "Lon": 0};
 function initMap() {
     let position = {lat: coor["Lat"], lng: coor["Lon"]};
     let map = new google.maps.Map(document.getElementById('map'), {
-	zoom: 17,
+	zoom: 4,
 	center: position
     });
 
-    let contentString = '<div id="content">'+
-        '<div id="siteNotice">'+
-        '</div>'+
-        '<h2 id="firstHeading" class="firstHeading">Linea 1</h2>'+
-        '<div id= "bodyContent">'+
-        '<p>Primera Junta - Moron'+
-        '</div>'+
-        '</div>';
+    let contentString = `<div id="content">
+        <div id="siteNotice">
+        </div>
+        <h2 id="firstHeading" class="firstHeading">Linea 1</h2>
+        <div id= "bodyContent">
+        <p>Primera Junta - Moron
+        </div>
+        </div>`;
 
      let infowindow= new google.maps.InfoWindow({
 	content: contentString
