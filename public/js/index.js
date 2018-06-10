@@ -40,14 +40,14 @@ function ajax(){
     let aj = new XMLHttpRequest();
     aj.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            let res = this.responseText;
-	    coor = JSON.parse(res);
-	    console.log(coor["Lat"], coor["Lon"]);
-	    initMap();
+           let res = this.responseText;
+	       coor = JSON.parse(res);
+	       console.log(coor["Lat"], coor["Lon"]);
+	       initMap();
         }
     };
-    let data = {"lat": 123, "long": 1234};//posicion usuario
-    aj.open("GET", "/getBus?Lat="+data["lat"]+"&Long="+data["long"], true);
+    let data = {"id": 123, "lat": 123, "long": 1234};//posicion usuario
+    aj.open("GET", "/getBus?Id="+data["id"]+"&Lat="+data["lat"]+"&Long="+data["long"], true);
     aj.send();
 }
 
