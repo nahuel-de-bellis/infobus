@@ -1,36 +1,26 @@
 class consultas{
-
-
-	update(colection, req, call){
+	update(c, req){
 		let id = parseInt(req.query.idCol);
-		let lat = req.query.Lat;
-		let lon = req.query.Long;
-		console.log(id, lat, lon);
-		colection.updateOne({id: id}, { $set:{ Lat: lat, Long: lon } }, function(err, result) {
-		    if(err){
-		    	console.log(err);
-		    }
-
-		    else{
-		    	console.log("Updated");
-		    	
-			}
-
-		 });   
+        let lat = parseInt(req.query.Lat);
+        let lon = parseInt(req.query.Long);
+		c.updateOne({id: id}, { $set:{ Lat: lat, Long: lon } }, function(err, result) {
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log("Updated");
+                        
+            }
+        });
 	}
 
-	find(colection, req){
+	find(c, req, resuelve){
 	
 		let id = parseInt(req.query.Id);
-		colection.find( { id: id } ).toArray().then(function (docs) {
-      		return docs;
-    	});		
+        c.find( { id: id } ).toArray(function(err, docs){
+            resuelve(docs);
+        });	
 	}
-
-
-
 }
-
-
 
 module.exports = new consultas;

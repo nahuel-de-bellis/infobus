@@ -6,8 +6,8 @@ module.exports = (database) => {
 	return new Promise((resuelve, error)=>{
 		mongoClient.connect(url, (err, ress)=>{
 			let db = ress.db(database);
-			
-			resuelve(db);
+			let c = db.collection("colectivos");
+			resuelve(c);
 		});
 
 	});
