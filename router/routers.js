@@ -44,7 +44,7 @@ module.exports = (app) =>{
         }).then((arr)=>{
             console.log(arr);
             let data = {"Lat": parseInt(arr[0]['Lat']), "Lon": parseInt(arr[0]['Long'])};
-            console.log("data", data, );
+            console.log("data", data);
             res.send(data);
         });
     	/*let data = {"Lat": lat, "Lon": lon};
