@@ -43,12 +43,18 @@ module.exports = (app) =>{
             
         }).then((arr)=>{
             console.log(arr);
+<<<<<<< HEAD
             let data = {"Lat": parseInt(arr[0]['Lat']), "Lon": parseInt(arr[0]['Long'])};
             console.log("data", data);
+=======
+            let data;
+            foreach(let i in arr){
+                data[i] = {"Lat": parseInt(arr[i]['Lat']), "Lon": parseInt(arr[i]['Long'])};
+            }
+             
+            console.log("data", data, );
+>>>>>>> 41e17d284cae4132912e4c2cd5d7cb5632d1bc49
             res.send(data);
         });
-    	/*let data = {"Lat": lat, "Lon": lon};
-    	let json = JSON.stringify(arr);
-        res.send(data);*/
     });
 }
