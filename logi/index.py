@@ -1,24 +1,9 @@
 from flask import Flask, render_template, request, abort, redirect
-#from flaskext.mysql import MySQL
 import os
 import mysql.connector as mysql
 
 app = Flask(__name__)
 
-"""mysql = MySQL()
-
-app.config['MYSQL_DATABASE_USER'] = "nhdb"
-app.config['MYSQL_DATABASE_PASSWORD'] = "123456789"
-app.config['MYSQL_DATABASE_DB'] = "users"
-app.config['MYSQL_DATABASER_HOST'] = "localhost"
-mysql.init_app(app)
-conn = mysql.connect()
-cursor = conn.cursor()
-
-app.config['MYSQL_DATABASE_DB'] = "tokens"
-con2 = mysql.connect()
-cur = con2.cursor()
-"""
 conneccion = mysql.connect(
 	host="localhost",
 	user="nhdb",
@@ -68,7 +53,7 @@ def login():
 		data = cursor.fetchall()
 		if(data):
 			tok = token()
-			return redirect("http://localhost:3000/"+tok, code=302)
+			return redirect("http://localhost:3000/?token="+tok, code=302)
 		else:
 			return "<h1>Usuario no registrado</h1>"
 	except:
@@ -84,3 +69,4 @@ def registro():
 	cursor.execute('insert into usuarios (`usernames`, `passwords`, `email`) values(%s, %s, %s)', param)
 	conneccion.commit()
 	return render_template("login.html")
+

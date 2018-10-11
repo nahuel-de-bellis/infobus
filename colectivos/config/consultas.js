@@ -8,7 +8,7 @@ class consultas{
                 console.log(err);
             }
             else{
-                console.log("Updated");
+                console.log("Updated", id, lat, lon);
                         
             }
         });

@@ -1,4 +1,5 @@
 var mapa;
+var colectivo = new array();
 window.addEventListener('load', ()=>{
     mapa = initMap(0, 0);
 });
@@ -32,6 +33,8 @@ function addMarker(map, Lat, Long) {
        map: map,
        title: "Linea 1",
      });
+
+    colectivo.push(marker);
 
     let infowindow = new google.maps.InfoWindow({
        content: contentString

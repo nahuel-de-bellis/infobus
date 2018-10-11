@@ -1,9 +1,28 @@
-const consultas = require("../config/consultas.js"); 
+const consultas = require("../config/consultas.js");
+const request = require("request");
 const bd = require("../database/bd.js");
+const path = require("path")
 const mongoClient = require("mongodb").MongoClient;
 
+function validate(token, res){
+    request('192.168.1.103:5000/validate/'+token, function(error, reponse, body){
+        if(body){
+            res.render("../public/index.html");        
+        }
+        else{
+            request('192.168.1.103:3000/getoken');
+        }
+
+    });
+}
+
+
 module.exports = (app) =>{
-    
+    /*app.get("/", (req, res) =>{
+        console.log(req.query.token);
+        res.sendFile("../public/index.html");//validate(req.query.token, res);
+    });*/
+
     app.get("/setBus", (req, res) => {
         bd("transporte").then( (c)=>{
             return new Promise( (resuelve, error)=>{

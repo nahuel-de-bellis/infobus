@@ -6,7 +6,7 @@ service mongod start
 #Login
 cd /home/nhdb/Documentos/infobus/logi
 export FLASK_APP=index.py
-flask run
+flask run --host=0.0.0.0 &
 #colectivos
 cd /home/nhdb/Documentos/infobus/colectivos
 node index.js
