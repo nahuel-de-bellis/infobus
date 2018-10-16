@@ -3,6 +3,9 @@ class consultas{
 		let id = parseInt(req.query.idCol);
         let lat = parseFloat(req.query.Lat);
         let lon = parseFloat(req.query.Long);
+        lat /= 1000000; 
+        lon /= 1000000;
+        console.log(lat, lon);
 		c.updateOne({id: id}, { $set:{ Lat: lat, Long: lon } }, function(err, result) {
             if(err){
                 console.log(err);

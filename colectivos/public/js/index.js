@@ -1,5 +1,5 @@
 var mapa;
-var colectivo = new array();
+var colectivo = [];
 window.addEventListener('load', ()=>{
     mapa = initMap(0, 0);
 });
@@ -11,6 +11,14 @@ function initMap(Lat = 0, Long = 0) {
     });
 
     return map;
+
+}
+
+function removeMarks(){
+    for(let i = 0; i < colectivo.length; i++){
+        console.log(colectivo[i]);
+        colectivo[i].setMap(null);
+    }
 
 }
 
@@ -46,21 +54,25 @@ function addMarker(map, Lat, Long) {
 }
 
 
+
 function ajax(){
+    setInterval(function (){
+    removeMarks();
     let aj = new XMLHttpRequest();
     aj.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-		    let res = this.responseText;
+        if(this.readyState == 4 && this.status == 200){
+            let res = this.responseText;
             let coor = JSON.parse(res);
             coor.map((value, index)=>{
                 console.log(value["Lat"], value["Long"]);
                 addMarker(mapa, value["Lat"], value["Long"]);
             });
                 
-		    }
-		};
-		let data = {"Linea": document.getElementById("text1").value, "lat": 123, "long": 1234};//posicion usuario
-		aj.open("GET", "/getBus?Linea="+data["Linea"], true);
-		aj.send();
+            }
+        };
+        let data = {"Linea": document.getElementById("text1").value, "lat": 123, "long": 1234};//posicion usuario
+        aj.open("GET", "/getBus?Linea="+data["Linea"], true);
+        aj.send();
+    }, 1000);    
 }
 

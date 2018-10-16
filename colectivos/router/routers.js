@@ -5,12 +5,13 @@ const path = require("path")
 const mongoClient = require("mongodb").MongoClient;
 
 function validate(token, res){
-    request('192.168.1.103:5000/validate/'+token, function(error, reponse, body){
-        if(body){
-            res.render("../public/index.html");        
+    request('http://192.168.1.103:5000/validate/'+token, {json: true}, function(error, reponse, body){
+        if(reponse.statusCode === 404) {
+            res.sendStatus(404);
+            return console.log(error)
         }
         else{
-            request('192.168.1.103:3000/getoken');
+            res.sendFile(path.join(__dirname, "../public/index.html"));
         }
 
     });
@@ -18,10 +19,10 @@ function validate(token, res){
 
 
 module.exports = (app) =>{
-    /*app.get("/", (req, res) =>{
+    app.get("/especial", (req, res) =>{
         console.log(req.query.token);
-        res.sendFile("../public/index.html");//validate(req.query.token, res);
-    });*/
+        validate(req.query.token, res);
+    });
 
     app.get("/setBus", (req, res) => {
         bd("transporte").then( (c)=>{
@@ -30,7 +31,7 @@ module.exports = (app) =>{
         });
         
     });
-    res.redirect("arduino.html");
+    res.sendFile(path.join(__dirname, "../public/arduino.html"));
 });
 
     app.get("/getBus", (req, res) => {

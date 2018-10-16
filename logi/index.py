@@ -30,9 +30,10 @@ def sesion(tok):
 	cursor.execute('USE tokens')
 	cursor.execute('SELECT * FROM tok where token = %s', param)
 	inf = cursor.fetchall()
-	if inf:
-		return "True"
-	return "False"
+	if not inf:
+		abort(404)
+	else:
+		return " ", 200
 
 @app.route("/login")
 def main():
@@ -53,7 +54,7 @@ def login():
 		data = cursor.fetchall()
 		if(data):
 			tok = token()
-			return redirect("http://localhost:3000/?token="+tok, code=302)
+			return redirect("http://192.168.1.103:3000/especial?token="+tok, code=302)
 		else:
 			return "<h1>Usuario no registrado</h1>"
 	except:
