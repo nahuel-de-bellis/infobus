@@ -3,20 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Registro InfoBus</title>
-  
-  
-  
+  <title>Registro InfoBus</title> 
       <link rel="stylesheet" href={{ url_for('static', filename="css/nuevo.css")}}>
-
-  
 </head>
-
 <body>
-
-  	
-
-<form method="post" action="/nuevo">
+<form id="form" method="post" action="/nuevo">
   <h2>Registrarse</h2>
 		<p>
 			<label for="Name" class="floatLabel">Username</label>
@@ -29,7 +20,7 @@
 		<p>
 			<label for="password" class="floatLabel">Contraseña</label>
 			<input id="password" name="password" type="password">
-			<span>La contraseña debe contener mas de 8 caracteres</span>
+			<span>La contraseña debe contener mas de 5 caracteres</span>
 		</p>
 		<p>
 			<label for="confirm_password" class="floatLabel">Confirmar Contraseña</label>
@@ -37,18 +28,11 @@
 			<span>Las contraseñas no coinciden</span>
 		</p>
 		<p>
-			<input type="submit" value="Crear Cuenta" id="submit">
+			<button onclick="canSubmit()" id="submit">Crear Cuenta</button>
 		</p>
 	</form>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-  
-
-    <script  src="js/nuevo.js"></script>
-
-
-
-
+  <script  src={{url_for('static', filename="js/nuevo.js")}}></script>
 </body>
 
 </html>

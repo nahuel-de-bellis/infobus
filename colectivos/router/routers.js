@@ -19,6 +19,9 @@ function validate(token, res){
 
 
 module.exports = (app) =>{
+    app.get("/", (req, res)=>{
+        res.redirect("192.168.1.103:3000/especial");
+    });
     app.get("/especial", (req, res) =>{
         console.log(req.query.token);
         validate(req.query.token, res);

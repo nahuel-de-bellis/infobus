@@ -7,7 +7,7 @@ var $confirmPassword = $("#confirm_password");
 $("form span").hide();
 
 function isPasswordValid() {
-  return $password.val().length > 8;
+  return $password.val().length > 5;
 }
 
 function arePasswordsMatching() {
@@ -15,7 +15,9 @@ function arePasswordsMatching() {
 }
 
 function canSubmit() {
-  return isPasswordValid() && arePasswordsMatching();
+  if(isPasswordValid() && arePasswordsMatching()){
+    document.getElementById('form').action("192.168.1.103:5000/nuevo");
+  }
 }
 
 function passwordEvent(){
