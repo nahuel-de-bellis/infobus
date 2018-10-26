@@ -1,6 +1,6 @@
 html, #todo 
 {
-	background:linear-gradient(to bottom right ,white,#007BB1,white);
+	background-color:#dac035;
 }
 
 #map 
@@ -14,15 +14,7 @@ html, #todo
 		border-width: 3px;
 		border-style: solid;
 }
-h3 
-{
-		color: rgb(0,0,0);
-		margin-left: 15px;
-		margin-top: 3px;
-		font-style: italic;
-	    font-family: helvetica;
-	    text-align: left;
-}
+
 
 #titulo
 {
@@ -37,7 +29,7 @@ h3
 
 }
 
-#form {
+/*#form {
 	border-radius: 30px;
 	border-color: rgb(0,0,0);
 	border-width: 3px;
@@ -46,12 +38,12 @@ h3
 	width: 460px;
 	margin-left: 425px;
     padding: 1px;
-	background: #fcecfc; /* Old browsers */
+	background: #fcecfc; /* Old browsers 
 	background: -moz-linear-gradient(-45deg, #fcecfc 0%, #fba6e1 50%, #fd89d7 51%, #ff7cd8 100%); 
 	background: -webkit-linear-gradient(-45deg, #fcecfc 0%,#fba6e1 50%,#fd89d7 51%,#ff7cd8 100%); 
 	background: linear-gradient(135deg, #fcecfc 0%,#fba6e1 50%,#fd89d7 51%,#ff7cd8 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#ff7cd8',GradientType=1 ); 
-}
+}*/
 
 .text1
 {
